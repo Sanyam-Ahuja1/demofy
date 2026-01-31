@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: demofy-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: GCP_CREDENTIALS
+        sync: false
+      - key: GCS_BUCKET_NAME
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: BASE_URL
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
