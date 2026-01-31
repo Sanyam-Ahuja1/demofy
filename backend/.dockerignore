@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Build output
+dist/
+build/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# Testing
+coverage/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prisma
+*.db
+*.db-journal
+
+# Git
+.git/
+.gitignore
+
+# Documentation (keep in source control, exclude from image)
+README.md
+DEPLOYMENT.md
+API.md

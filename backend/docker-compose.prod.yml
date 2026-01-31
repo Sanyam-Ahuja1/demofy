@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: Farmer-Dairy-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.production
+    environment:
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?schema=public
+      - REDIS_URL=redis://redis:6379
+      - STORAGE_BUCKET_URL=https://storage.googleapis.com/farmify-prod-images
+      - GCS_BUCKET_NAME=farmify-prod-images
+      - GOOGLE_APPLICATION_CREDENTIALS=/tmp/keys/gcp-creds.json
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./gcp-creds.json:/tmp/keys/gcp-creds.json:ro
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: Farmer-Dairy-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:alpine
+    container_name: Farmer-Dairy-redis
+    restart: always
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:

@@ -1,0 +1,58 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+
+# Testing
+coverage
+.nyc_output
+
+# Production build
+dist
+build
+.next
+out
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# System Files
+.DS_Store
+Thumbs.db
+.classpath
+.project
+.settings
+.factorypath
+
+# IDEs include
+.idea
+.vscode
+*.swp
+*.swo
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Prisma
+/prisma/*.db
+/prisma/*.db-journal
+
+# Project specific
+/backend/dist
+/Website/.next
+/admin-panel/.next

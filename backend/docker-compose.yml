@@ -1,0 +1,94 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: Farmer-Dairy-postgres
+    environment:
+      POSTGRES_USER: farmer_dairy
+      POSTGRES_PASSWORD: farmer_dairy_dev_pass
+      POSTGRES_DB: farmer_dairy
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U farmer_dairy"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis (Optional - for rate limiting)
+  redis:
+    image: redis:7-alpine
+    container_name: Farmer-Dairy-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # Backend Application
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: Farmer-Dairy-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      BASE_URL: http://localhost:3000
+      DATABASE_URL: postgresql://farmer_dairy:farmer_dairy_dev_pass@postgres:5432/farmer_dairy?schema=public
+      JWT_SECRET: dev-jwt-secret-change-in-production-min-32-chars
+      JWT_REFRESH_SECRET: dev-refresh-secret-change-in-production-min-32-chars
+      JWT_ACCESS_EXPIRY: 15m
+      JWT_REFRESH_EXPIRY: 7d
+      ALLOWED_ORIGINS: http://localhost:3000,http://localhost:3001,http://localhost:19006,http://localhost:3002
+      REDIS_URL: redis://redis:6379
+      OTP_EXPIRY_MINUTES: 15
+      OTP_LENGTH: 6
+      OTP_PROVIDER: console
+      STORAGE_BUCKET_URL: https://storage.googleapis.com/farmify-prod-images
+      GCS_BUCKET_NAME: farmify-prod-images
+      # Credentials for GCS - Ensure you run 'gcloud auth application-default login' on host
+      GOOGLE_APPLICATION_CREDENTIALS: /tmp/keys/gcp-creds.json
+      ADMIN_EMAIL: admin@Farmer-Dairy.com
+      ADMIN_PASSWORD: changeme123
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./nodemon.json:/app/nodemon.json
+      # Mount host credentials into container
+      - ~/.config/gcloud/application_default_credentials.json:/tmp/keys/gcp-creds.json:ro
+    command: npm run dev
+
+  # Development tools (optional)
+  # Uncomment to enable Prisma Studio
+  # prisma-studio:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #     target: builder
+  #   container_name: Farmer-Dairy-prisma-studio
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     DATABASE_URL: postgresql://Farmer-Dairy:Farmer-Dairy_dev_pass@postgres:5432/Farmer-Dairy?schema=public
+  #   ports:
+  #     - '5555:5555'
+  #   command: npx prisma studio
+
+volumes:
+  postgres_data:
+  redis_data:

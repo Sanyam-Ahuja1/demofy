@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "slug": "organic-tomatoes",
+    "name": "Organic Tomatoes",
+    "description": "Fresh, juicy organic tomatoes grown without pesticides. Perfect for salads, cooking, and sauces. Rich in vitamins and antioxidants.",
+    "price": 80,
+    "category": "vegetables",
+    "images": ["/images/placeholder.svg"],
+    "stock": 50,
+    "inStock": true,
+    "unit": "kg"
+  },
+  {
+    "id": "2",
+    "slug": "fresh-spinach",
+    "name": "Fresh Spinach",
+    "description": "Nutrient-rich organic spinach leaves, harvested fresh daily. High in iron and vitamins. Great for smoothies and cooking.",
+    "price": 40,
+    "category": "vegetables",
+    "images": ["/images/placeholder.svg"],
+    "stock": 30,
+    "inStock": true,
+    "unit": "bunch"
+  },
+  {
+    "id": "3",
+    "slug": "organic-carrots",
+    "name": "Organic Carrots",
+    "description": "Sweet, crunchy organic carrots. Perfect for snacking, juicing, or cooking. Rich in beta-carotene and fiber.",
+    "price": 60,
+    "category": "vegetables",
+    "images": ["/images/placeholder.svg"],
+    "stock": 40,
+    "inStock": true,
+    "unit": "kg"
+  },
+  {
+    "id": "4",
+    "slug": "farm-fresh-eggs",
+    "name": "Farm Fresh Eggs",
+    "description": "Free-range chicken eggs from our farm. Rich, golden yolks and superior taste. Packed with protein and nutrients.",
+    "price": 120,
+    "category": "dairy-eggs",
+    "images": ["/images/placeholder.svg"],
+    "stock": 20,
+    "inStock": true,
+    "unit": "dozen"
+  },
+  {
+    "id": "5",
+    "slug": "organic-milk",
+    "name": "Organic Milk",
+    "description": "Fresh organic milk from grass-fed cows. No hormones or antibiotics. Rich, creamy taste.",
+    "price": 70,
+    "category": "dairy-eggs",
+    "images": ["/images/placeholder.svg"],
+    "stock": 25,
+    "inStock": true,
+    "unit": "liter"
+  },
+  {
+    "id": "6",
+    "slug": "fresh-strawberries",
+    "name": "Fresh Strawberries",
+    "description": "Sweet, juicy organic strawberries. Perfect for desserts, smoothies, or eating fresh. Packed with vitamin C.",
+    "price": 200,
+    "category": "fruits",
+    "images": ["/images/placeholder.svg"],
+    "stock": 15,
+    "inStock": true,
+    "unit": "kg"
+  },
+  {
+    "id": "7",
+    "slug": "organic-apples",
+    "name": "Organic Apples",
+    "description": "Crisp, sweet organic apples. Great for snacking, baking, or juicing. Rich in fiber and antioxidants.",
+    "price": 150,
+    "category": "fruits",
+    "images": ["/images/placeholder.svg"],
+    "stock": 35,
+    "inStock": true,
+    "unit": "kg"
+  },
+  {
+    "id": "8",
+    "slug": "farm-honey",
+    "name": "Farm Honey",
+    "description": "Pure, raw honey from our local beehives. Natural sweetener with antibacterial properties. Rich, golden flavor.",
+    "price": 350,
+    "category": "artisanal",
+    "images": ["/images/placeholder.svg"],
+    "stock": 12,
+    "inStock": true,
+    "unit": "500g jar"
+  },
+  {
+    "id": "9",
+    "slug": "organic-potatoes",
+    "name": "Organic Potatoes",
+    "description": "Versatile organic potatoes. Perfect for mashing, roasting, or frying. Grown in nutrient-rich soil.",
+    "price": 45,
+    "category": "vegetables",
+    "images": ["/images/placeholder.svg"],
+    "stock": 60,
+    "inStock": true,
+    "unit": "kg"
+  },
+  {
+    "id": "10",
+    "slug": "fresh-bananas",
+    "name": "Fresh Bananas",
+    "description": "Sweet, ripe bananas. Rich in potassium and energy. Perfect for breakfast or smoothies.",
+    "price": 50,
+    "category": "fruits",
+    "images": ["/images/placeholder.svg"],
+    "stock": 0,
+    "inStock": false,
+    "unit": "dozen"
+  }
+]

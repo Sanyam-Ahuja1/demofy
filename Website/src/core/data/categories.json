@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "slug": "vegetables",
+    "name": "Vegetables",
+    "description": "Fresh, organic vegetables grown with care. From leafy greens to root vegetables, find the best seasonal produce."
+  },
+  {
+    "id": "2",
+    "slug": "fruits",
+    "name": "Fruits",
+    "description": "Sweet, juicy organic fruits. Handpicked at peak ripeness for maximum flavor and nutrition."
+  },
+  {
+    "id": "3",
+    "slug": "dairy-eggs",
+    "name": "Dairy & Eggs",
+    "description": "Fresh dairy products and free-range eggs from our farm. Pure, organic, and delicious."
+  },
+  {
+    "id": "4",
+    "slug": "artisanal",
+    "name": "Artisanal Products",
+    "description": "Handcrafted farm products including honey, jams, and preserves. Made with love and care."
+  }
+]
